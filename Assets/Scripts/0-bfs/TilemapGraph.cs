@@ -9,10 +9,18 @@ using UnityEngine.Tilemaps;
 public class TilemapGraph: IGraph<Vector3Int> {
     private Tilemap tilemap;
     private TileBase[] allowedTiles;
+    private float[] tilePrices; // New array for tile prices
 
     public TilemapGraph(Tilemap tilemap, TileBase[] allowedTiles) {
         this.tilemap = tilemap;
         this.allowedTiles = allowedTiles;
+    }
+    
+    // New constructor to also include prices
+    public TilemapGraph(Tilemap tilemap, TileBase[] allowedTiles, List<float> tilePrices) {
+        this.tilemap = tilemap;
+        this.allowedTiles = allowedTiles;
+        this.tilePrices = tilePrices.ToArray();
     }
 
     static Vector3Int[] directions = {
@@ -29,5 +37,11 @@ public class TilemapGraph: IGraph<Vector3Int> {
             if (allowedTiles.Contains(neighborTile))
                 yield return neighborPos;
         }
+    }
+    
+    public float GetCost(Vector3Int from, Vector3Int to) {
+        TileBase tile = tilemap.GetTile(to);
+        int index = System.Array.IndexOf(allowedTiles, tile); // Find index of tile in allowedTiles
+        return index >= 0 ? tilePrices[index] : float.MaxValue; // Return cost or a high cost for invalid tiles
     }
 }

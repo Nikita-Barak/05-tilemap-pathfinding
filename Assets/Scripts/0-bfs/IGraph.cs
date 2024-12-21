@@ -10,4 +10,5 @@
  */
 public interface IGraph<T> {
     IEnumerable<T> Neighbors(T node);
+    float GetCost(T from, T to); // New method to get the cost between two nodes
 }
