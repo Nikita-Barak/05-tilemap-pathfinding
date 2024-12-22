@@ -6,14 +6,14 @@ using UnityEngine.Tilemaps;
 /**
  * This component moves its object towards a given target position.
  */
-public class TargetMover: MonoBehaviour {
+public class TargetMover : MonoBehaviour {
     [SerializeField] Tilemap tilemap = null;
     [SerializeField] AllowedTilesWithCost allowedTiles = null;
 
     [Tooltip("The speed by which the object moves towards the target, in meters (=grid units) per second")]
-    [SerializeField] float speed = 2f;
+    [SerializeField] float baseSpeed = 2f;
 
-    [Tooltip("Maximum number of iterations before BFS algorithm gives up on finding a path")]
+    [Tooltip("Maximum number of iterations before BFS/A* algorithm gives up on finding a path")]
     [SerializeField] int maxIterations = 1000;
 
     [Tooltip("The target position in world coordinates")]
@@ -22,7 +22,7 @@ public class TargetMover: MonoBehaviour {
     [Tooltip("The target position in grid coordinates")]
     [SerializeField] Vector3Int targetInGrid;
 
-    protected bool atTarget;  // This property is set to "true" whenever the object has already found the target.
+    protected bool atTarget;
 
     public void SetTarget(Vector3 newTarget) {
         if (targetInWorld != newTarget) {
@@ -37,35 +37,57 @@ public class TargetMover: MonoBehaviour {
     }
 
     private TilemapGraph tilemapGraph = null;
-    private float timeBetweenSteps;
 
     protected virtual void Start() {
         tilemapGraph = new TilemapGraph(tilemap, allowedTiles.Get(), allowedTiles.GetPrices());
-        timeBetweenSteps = 1 / speed;
         StartCoroutine(MoveTowardsTheTarget());
     }
 
     IEnumerator MoveTowardsTheTarget() {
-        for(;;) {
-            yield return new WaitForSeconds(timeBetweenSteps);
-            if (enabled && !atTarget)
-                MakeOneStepTowardsTheTarget();
+        while (true) {
+            if (enabled && !atTarget) {
+                yield return MakeOneStepTowardsTheTarget();
+            } else {
+                yield return null;
+            }
         }
     }
 
-    private void MakeOneStepTowardsTheTarget() {
+    IEnumerator MakeOneStepTowardsTheTarget() {
         Vector3Int startNode = tilemap.WorldToCell(transform.position);
         Vector3Int endNode = targetInGrid;
         List<Vector3Int> shortestPath = A_STAR.GetPath(tilemapGraph, startNode, endNode, maxIterations);
-        Debug.Log("shortestPath = " + string.Join(" , ",shortestPath));
-        if (shortestPath.Count >= 2) { // shortestPath contains both source and target.
+
+        if (shortestPath.Count >= 2) {
             Vector3Int nextNode = shortestPath[1];
-            transform.position = tilemap.GetCellCenterWorld(nextNode);
+            float moveSpeed = GetSpeedForTile(nextNode);
+
+            // Move smoothly to the target tile
+            Vector3 nextPosition = tilemap.GetCellCenterWorld(nextNode);
+            while (Vector3.Distance(transform.position, nextPosition) > 0.01f) {
+                transform.position = Vector3.MoveTowards(
+                    transform.position,
+                    nextPosition,
+                    moveSpeed * Time.deltaTime
+                );
+                yield return null;
+            }
+
+            // Snap to the target tile to avoid floating-point errors
+            transform.position = nextPosition;
         } else {
             if (shortestPath.Count == 0) {
                 Debug.LogError($"No path found between {startNode} and {endNode}");
             }
             atTarget = true;
         }
+    }
+
+    private float GetSpeedForTile(Vector3Int tilePosition) {
+        TileBase tile = tilemap.GetTile(tilePosition);
+        if (tile != null && allowedTiles.Contains(tile)) {
+            return baseSpeed / allowedTiles.GetCost(tile); // Adjust speed based on tile cost
+        }
+        return baseSpeed; // Default speed for undefined tiles
     }
 }
