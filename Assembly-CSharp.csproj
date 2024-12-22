@@ -54,6 +54,7 @@
     <Compile Include="Assets/Scripts/3-enemies/Cycle.cs" />
     <Compile Include="Assets/Scripts/2-player/KeyboardMover.cs" />
     <Compile Include="Assets/Scripts/2-player/TargetMover.cs" />
+    <Compile Include="Assets/Scripts/0-bfs/A_STAR_Tests.cs" />
     <Compile Include="Assets/Scripts/4-generation/TilemapCaveGenerator.cs" />
     <Compile Include="Assets/Scripts/0-bfs/TilemapGraph.cs" />
     <Compile Include="Assets/Scripts/0-bfs/A_STAR.cs" />

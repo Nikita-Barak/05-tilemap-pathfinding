@@ -170,15 +170,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8f2cab6dea1a2d147b231cc92eb1f7e2, type: 2}
   tileDataWithCosts:
   - tile: {fileID: 11400000, guid: 149fb7c95775bc842bc8f54055585274, type: 2}
-    cost: 5
+    cost: 2
   - tile: {fileID: 11400000, guid: 0cea26e1a47ac8d46850becac1a6c757, type: 2}
-    cost: 20
+    cost: 5
   - tile: {fileID: 11400000, guid: 2ad1759387b28444892c8549e6122652, type: 2}
     cost: 3
   - tile: {fileID: 11400000, guid: 8f2cab6dea1a2d147b231cc92eb1f7e2, type: 2}
     cost: 1
   - tile: {fileID: 11400000, guid: fbc7e53732751274190a9ea1250192b4, type: 2}
-    cost: 4
+    cost: 5
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -419,7 +419,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilemap: {fileID: 931517250}
   allowedTiles: {fileID: 73550133}
-  speed: 10
+  baseSpeed: 10
   maxIterations: 10000
   targetInWorld: {x: 0, y: 0, z: 0}
   targetInGrid: {x: 0, y: 0, z: 0}
