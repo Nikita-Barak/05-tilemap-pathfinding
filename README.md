@@ -6,7 +6,7 @@ and how to do path-finding using the BFS and A* algorithms.
 ## Itch.io
 Links to the Itch.io builds demonstrating the latest assignment:
 
-- [A-Star](https://nikita-barak.itch.io/tilemap-a-star) (relevant scripts here: )
+- [A-Star](https://nikita-barak.itch.io/tilemap-a-star) (relevant scripts here: [Speed control](https://github.com/Nikita-Barak/05-tilemap-pathfinding/blob/bb153b67d480b0f865a653c5e0018510ded499c6/Assets/Scripts/2-player/TargetMover.cs#L86), [Usage](https://github.com/Nikita-Barak/05-tilemap-pathfinding/blob/bb153b67d480b0f865a653c5e0018510ded499c6/Assets/Scripts/2-player/TargetMover.cs#L59), [Algorithm](https://github.com/Nikita-Barak/05-tilemap-pathfinding/blob/master/Assets/Scripts/0-bfs/A_STAR.cs), [Unit-Tests](https://github.com/Nikita-Barak/05-tilemap-pathfinding/blob/master/Assets/Scripts/0-bfs/A_STAR_Tests.cs))
   
 - [Interactable Vehicles and Objects](https://nikita-barak.itch.io/tilemap-environment-interactions) (relevant script [here](https://github.com/Nikita-Barak/05-tilemap-pathfinding/blob/master/Assets/Scripts/2-player/PlayerVehicleTraversal.cs).)
 
