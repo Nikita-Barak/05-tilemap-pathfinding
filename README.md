@@ -6,11 +6,9 @@ and how to do path-finding using the BFS and A* algorithms.
 ## Itch.io
 Links to the Itch.io builds demonstrating the latest assignment:
 
-- [A-Star](https://nikita-barak.itch.io/tilemap-a-star)
-  relevant scripts: 
+- [A-Star](https://nikita-barak.itch.io/tilemap-a-star), relevant scripts here:
   
-- [Interactable Vehicles and Objects](https://nikita-barak.itch.io/tilemap-environment-interactions)
-  Relevant script found [here](https://github.com/Nikita-Barak/05-tilemap-pathfinding/blob/master/Assets/Scripts/2-player/PlayerVehicleTraversal.cs).
+- [Interactable Vehicles and Objects](https://nikita-barak.itch.io/tilemap-environment-interactions), relevant script [here](https://github.com/Nikita-Barak/05-tilemap-pathfinding/blob/master/Assets/Scripts/2-player/PlayerVehicleTraversal.cs).
 
 ## Cloning
 To clone the project, you may need to install git lfs first:
