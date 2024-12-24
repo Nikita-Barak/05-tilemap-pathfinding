@@ -1,16 +1,21 @@
 # Unity week 5: Two-dimensional scene-building and path-finding
 
-A project with step-by-step scenes illustrating how to construct a 2D scene using tilemaps,
-and how to do path-finding using the BFS algorithm.
+A project with step-by-step scenes illustrating how to construct a 2D scene using tilemaps, program interactables environments
+and how to do path-finding using the BFS and A* algorithms.
 
-Text explanations are available 
-[here](https://github.com/gamedev-at-ariel/gamedev-5782) in folder 07.
+## Itch.io
+Links to the Itch.io builds demonstrating the latest assignment:
+
+- [A-Star](https://nikita-barak.itch.io/tilemap-a-star)
+  relevant scripts: 
+  
+- [Interactable Vehicles and Objects](https://nikita-barak.itch.io/tilemap-environment-interactions)
+  Relevant script found [here](https://github.com/Nikita-Barak/05-tilemap-pathfinding/blob/master/Assets/Scripts/2-player/PlayerVehicleTraversal.cs).
 
 ## Cloning
 To clone the project, you may need to install git lfs first:
 
     git lfs install 
-
 
 ## Credits
 
@@ -26,3 +31,5 @@ Procedural generation:
 
 Programming:
 * Erel Segal-Halevi
+* Nikita Bresklavsky
+* Barak Finkel
