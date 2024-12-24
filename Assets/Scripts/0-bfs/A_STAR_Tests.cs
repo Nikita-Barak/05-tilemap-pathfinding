@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
@@ -109,3 +110,4 @@ using UnityEngine;
             return tileCosts.TryGetValue(toNode, out float cost) ? cost : float.MaxValue;
         }
     }
+#endif
