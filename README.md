@@ -1,6 +1,6 @@
 # Unity week 5: Two-dimensional scene-building and path-finding
 
-A project with step-by-step scenes illustrating how to construct a 2D scene using tilemaps, program interactables environments
+A project with step-by-step scenes illustrating how to construct a 2D scene using tilemaps, program interactable environments
 and how to do path-finding using the BFS and A* algorithms.
 
 ## Itch.io
